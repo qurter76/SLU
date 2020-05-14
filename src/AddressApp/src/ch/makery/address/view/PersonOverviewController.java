@@ -28,36 +28,36 @@ public class PersonOverviewController {
     @FXML
     private Label birthdayLabel;
 
-    // 메인 애플리케이션 참조
+    // Reference to the main application.
     private MainApp mainApp;
 
     /**
-     * 생성자.
-     * initialize() 메서드 이전에 호출된다.
+     * The constructor.
+     * The constructor is called before the initialize() method.
      */
     public PersonOverviewController() {
     }
 
     /**
-     * 컨트롤러 클래스를 초기화한다.
-     * fxml 파일이 로드되고 나서 자동으로 호출된다.
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
      */
     @FXML
     private void initialize() {
-    	// 연락처 테이블의 두 열을 초기화한다.
+        // Initialize the person table with the two columns.
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
     }
 
     /**
-     * 참조를 다시 유지하기 위해 메인 애플리케이션이 호출한다.
-     *
+     * Is called by the main application to give a reference back to itself.
+     * 
      * @param mainApp
      */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
-        // 테이블에 observable 리스트 데이터를 추가한다.
+        // Add observable list data to the table
         personTable.setItems(mainApp.getPersonData());
     }
 }
